@@ -5,7 +5,6 @@
  * Code for the Mica Connector module
  */
 
-
 /**
  * Implements hook_entity_info().
  */
@@ -308,3 +307,75 @@ function _mica_connector_find_source_for_target(FeedsProcessor $processor, $targ
 function mica_connector_dataset_has_connectors($dataset_nid) {
   return count(MicaDatasetConnector::findConnectorsByDataset($dataset_nid)) > 0;
 }
+//
+///**
+// * Implements hook_init().
+// */
+//function mica_connector_init() {
+//  spl_autoload_register('_mica_connector_autoload');
+//}
+//
+///**
+// * Autoloader for the opal_php classes.
+// */
+//function _mica_connector_autoload($name) {
+//
+//  debug($name);
+//
+//  static $lookup_cache = array();
+//
+//  if (isset($lookup_cache[$name])) {
+//    return $lookup_cache[$name];
+//  }
+//  elseif (substr($name, 0, 11) === 'Apache_Solr') { //TODO: change Apache_Solr for
+//    $path = _mica_connector_opal_php_path();
+//    if (file_exists($file_path = $path . '/' . str_replace('_', '/', $name) . '.php')) {
+//      require_once $file_path;
+//      $lookup_cache[$name] = TRUE;
+//      return TRUE;
+//    }
+//  }
+//  $lookup_cache[$name] = FALSE;
+//  return FALSE;
+//}
+//
+///**
+// * Return path to opal_php library path, or FALSE if not found.
+// */
+//function _mica_connector_opal_php_path() {
+//  static $path = NULL;
+//
+//  if (!isset($path)) {
+//    $path = FALSE;
+//    // If Libraries API is installed, we first use that to try and find the
+//    // library. Otherwise we manually check a few locations.
+//    $search_dirs = array();
+//    if (function_exists('libraries_get_path')) {
+//      $dir = libraries_get_path('opal_php');
+//      // Confusingly, Libraries API 1.x will return sites/all/libraries/NAME on
+//      // failure, while Libraries API 2.x returns FALSE in that case.
+//      if ($dir) {
+//        $search_dirs[] = $dir;
+//      }
+//    }
+//    else {
+//      // Include libraries + current profile folders in searched directories.
+//      $search_dirs[] = 'sites/all/libraries/opal_php';
+//      $search_dirs[] = 'profiles/' . drupal_get_profile() . '/libraries/opal_php';
+//    }
+//    $search_dirs[] = drupal_get_path('module', 'mica_connector') . '/opal_php';
+//    foreach ($search_dirs as $dir) {
+//      $dir = DRUPAL_ROOT . '/' . $dir;
+//      if (is_dir($dir)) {
+//        $path = $dir;
+//        break;
+//      }
+//    }
+//  }
+//
+//  if ($path == FALSE) {
+//    throw new Exception('opal_php library not found! Please follow the instructions in mica_connector/INSTALL.txt for installing the Mica Connector module.');
+//  }
+//
+//  return $path;
+//}

@@ -244,6 +244,10 @@ libraries[jquery_tooltip][download][type]= get
 libraries[jquery_tooltip][download][url] = http://jquery.bassistance.de/tooltip/jquery.tooltip.zip
 libraries[jquery_tooltip][directory_name] = jquery_tooltip
 
+libraries[opal_php][download][type]= get
+libraries[opal_php][download][url] = http://download.obiba.org/opal/unstable/opal-php_1.11-SNAPSHOT.zip
+libraries[opal_php][directory_name] = opal_php
+
 libraries[prettify_css][download][type] = get
 libraries[prettify_css][download][url] = http://google-code-prettify.googlecode.com/svn/branches/release-1-Jun-2011/src/prettify.css
 libraries[prettify_css][directory_name] = prettify
