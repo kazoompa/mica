@@ -228,7 +228,6 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetAbstractConnection imple
     try {
       $result = $this->esQueryApi->query($terms);
     } catch (Exception $e) {
-      $this->displayError($e);
       $result = $this->esQueryDefault->query($terms);
     }
 
